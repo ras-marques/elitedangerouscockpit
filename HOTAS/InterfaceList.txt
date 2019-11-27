@@ -1,0 +1,12 @@
+Throttle:
+2 push buttons in the thumb area
+1 push button in the index and middle finger area
+1 push button on a joystick sensor
+2 axes on a joystick sensor
+1 hall sensor for throttle
+
+Throttle pad:
+6 touch panels for palm and fingers
+
+Reference: https://www.youtube.com/watch?v=blZqyv6m1DI
+

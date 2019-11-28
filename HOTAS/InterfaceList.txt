@@ -8,5 +8,18 @@ Throttle:
 Throttle pad:
 6 touch panels for palm and fingers
 
+Stick pad:
+8 rocker switches
+10 push buttons
+
+Stick:
+2 Dpads
+2 push buttons
+1 push button with safety
+1 push button for primary fire
+1 push button for secondary fire/mode
+2 axes on a joystick sensor
+1 axis for rudder
+
 Reference: https://www.youtube.com/watch?v=blZqyv6m1DI
 

@@ -7,6 +7,14 @@ Throttle:
 
 Throttle pad:
 6 touch panels for palm and fingers
+1 momentary push button below
+2 toggleable push button below
+
+Total:
+4 digital inputs
+3 analog inputs
+
+Tablet/notebook in the middle
 
 Stick pad:
 8 rocker switches
@@ -21,5 +29,12 @@ Stick:
 2 axes on a joystick sensor
 1 axis for rudder
 
+Total:
+31 digital inputs
+3 analog inputs
+
 Reference: https://www.youtube.com/watch?v=blZqyv6m1DI
 
+Total combined:
+35 digital inputs
+6 analog inputs

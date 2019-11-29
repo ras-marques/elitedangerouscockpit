@@ -1,0 +1,8 @@
+1 arduino leonardo
+5 74HC165 8bit shift register - 40 digital inputs
+1 linear hall sensor
+2 joystick sensors
+1 potentiometer
+2 dpad switches
+8 rocker switches
+19 push buttons

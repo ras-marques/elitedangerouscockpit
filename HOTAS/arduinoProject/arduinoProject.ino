@@ -13,42 +13,53 @@
 
 #include <Joystick.h>
 
-Joystick_ Joystick(
-  JOYSTICK_DEFAULT_REPORT_ID, JOYSTICK_TYPE_JOYSTICK, 27, 2,
-  true, true, false,
-  true, true, true, false, true,
-  false, false, false
+Joystick_ Joystick(JOYSTICK_DEFAULT_REPORT_ID,JOYSTICK_TYPE_GAMEPAD,
+  3, 0, //Buttons,  Hats
+  true, true, false, //X, Y, Z
+  false, false, false, //Rx, Ry, Rz, 
+  false, true, //Rudder, Throttle
+  false, false, false //Accelerator, Brake, Steering
   );
 
 void setup() {
+  Serial.begin(9600);
   // Initialize Button Pins
-  pinMode(9, INPUT_PULLUP);
-  pinMode(10, INPUT_PULLUP);
-  pinMode(11, INPUT_PULLUP);
-  pinMode(12, INPUT_PULLUP);
+  pinMode(4, INPUT_PULLUP);
+  pinMode(5, INPUT_PULLUP);
+  pinMode(6, INPUT_PULLUP);
 
   // Initialize Joystick Library
   Joystick.begin();
 }
 
 // Constant that maps the phyical pin to the joystick button.
-const int pinToButtonMap = 9;
+const int pinToButtonMap = 4;
 
 // Last state of the button
-int lastButtonState[4] = {0,0,0,0};
+int lastButtonState[3] = {0,0,0};
 
 void loop() {
+  Joystick.setButton(0, !digitalRead(4));
+  Joystick.setButton(1, !digitalRead(5));
+  Joystick.setButton(2, !digitalRead(6));
+  
+  //int XAxisAnalog = map(analogRead(0), 0, 1024, -127, 128);
+  //int YAxisAnalog = map(analogRead(1), 0, 1024, -127, 128);
+  //int ZAxisAnalog = map(analogRead(2), 0, 1024, -127, 128);
 
-  // Read pin values
-  for (int index = 0; index < 4; index++)
-  {
-    int currentButtonState = !digitalRead(index + pinToButtonMap);
-    if (currentButtonState != lastButtonState[index])
-    {
-      Joystick.setButton(index, currentButtonState);
-      lastButtonState[index] = currentButtonState;
-    }
-  }
+  int XAxisAnalog = analogRead(0);
+  int YAxisAnalog = analogRead(1);
+  int ThrottleAnalog = analogRead(2);
+
+  //Serial.print(XAxisAnalog);
+  //Serial.print(",");
+  //Serial.print(YAxisAnalog);
+  //Serial.print(",");
+  //Serial.println(ThrottleAnalog);
+  
+  Joystick.setXAxis(XAxisAnalog);
+  Joystick.setYAxis(YAxisAnalog);
+  Joystick.setThrottle(ThrottleAnalog);
 
   delay(50);
 }

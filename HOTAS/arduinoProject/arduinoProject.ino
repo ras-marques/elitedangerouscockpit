@@ -14,7 +14,7 @@
 #include <Joystick.h>
 
 Joystick_ Joystick(JOYSTICK_DEFAULT_REPORT_ID,JOYSTICK_TYPE_GAMEPAD,
-  3, 0, //Buttons,  Hats
+  11, 0, //Buttons,  Hats
   true, true, false, //X, Y, Z
   false, false, false, //Rx, Ry, Rz, 
   false, true, //Rudder, Throttle
@@ -24,9 +24,17 @@ Joystick_ Joystick(JOYSTICK_DEFAULT_REPORT_ID,JOYSTICK_TYPE_GAMEPAD,
 void setup() {
   Serial.begin(9600);
   // Initialize Button Pins
+  pinMode(3, INPUT_PULLUP);
   pinMode(4, INPUT_PULLUP);
   pinMode(5, INPUT_PULLUP);
   pinMode(6, INPUT_PULLUP);
+  pinMode(7, INPUT_PULLUP);
+  pinMode(8, INPUT_PULLUP);
+  pinMode(9, INPUT_PULLUP);
+  pinMode(10, INPUT_PULLUP);
+  pinMode(11, INPUT_PULLUP);
+  pinMode(12, INPUT_PULLUP);
+  pinMode(13, INPUT_PULLUP);
 
   // Initialize Joystick Library
   Joystick.begin();
@@ -39,17 +47,25 @@ const int pinToButtonMap = 4;
 int lastButtonState[3] = {0,0,0};
 
 void loop() {
-  Joystick.setButton(0, !digitalRead(4));
+  Joystick.setButton(0, !digitalRead(3));
   Joystick.setButton(1, !digitalRead(5));
-  Joystick.setButton(2, !digitalRead(6));
+  Joystick.setButton(2, !digitalRead(4));
+  Joystick.setButton(8, !digitalRead(6));
+  Joystick.setButton(9, !digitalRead(7));
+  Joystick.setButton(6, !digitalRead(8));
+  Joystick.setButton(10, !digitalRead(9));
+  Joystick.setButton(5, !digitalRead(10));
+  Joystick.setButton(3, !digitalRead(11));
+  Joystick.setButton(4, !digitalRead(12));
+  Joystick.setButton(7, !digitalRead(13));
   
   //int XAxisAnalog = map(analogRead(0), 0, 1024, -127, 128);
   //int YAxisAnalog = map(analogRead(1), 0, 1024, -127, 128);
   //int ZAxisAnalog = map(analogRead(2), 0, 1024, -127, 128);
 
-  int XAxisAnalog = analogRead(0);
-  int YAxisAnalog = analogRead(1);
-  int ThrottleAnalog = analogRead(2);
+  int XAxisAnalog = map(analogRead(1), 0, 1024, 1024, 0);
+  int YAxisAnalog = map(analogRead(0), 0, 1024, 1024, 0);
+  int ThrottleAnalog = map(analogRead(2), 0, 1024, 1024, 0);
 
   //Serial.print(XAxisAnalog);
   //Serial.print(",");
